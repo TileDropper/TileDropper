@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TileDropper - falling-notes piano videos</title><meta name="description" content="Turn a MIDI or MusicXML file into a falling-notes piano video. Free, in your browser. Customize colors, effects, sound and hands.">
+<meta property="og:title" content="TileDropper - falling-notes piano videos"><meta property="og:description" content="Turn a MIDI or MusicXML file into a falling-notes piano video. Free, in your browser. Customize colors, effects, sound and hands."><meta property="og:image" content="img/shot-neon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090c12'/%3E%3Crect x='6' y='5' width='5' height='10' rx='1.5' fill='%239db4ff'/%3E%3Crect x='13.5' y='9' width='5' height='6' rx='1.5' fill='%23ff6b81'/%3E%3Crect x='21' y='4' width='5' height='11' rx='1.5' fill='%236ee7a8'/%3E%3Crect x='4' y='18' width='24' height='9' rx='2' fill='%23e8ecf4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap">
+<style>
+:root{--bg:#090c12;--s:#10151e;--s2:#161d29;--line:#232c3c;--fg:#e8ecf4;--mute:#9aa6bb;--accent:#9db4ff;--ink:#0a0d14;color-scheme:dark}
+*{box-sizing:border-box}html,body{background:var(--bg)}
+body{margin:0;color:var(--fg);font:16px/1.6 'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;padding-inline:16px}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto}
+nav{display:flex;align-items:center;gap:20px;padding-block:20px;flex-wrap:wrap}
+.logo{font:700 24px/1 'Bricolage Grotesque','DM Sans',sans-serif;letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto}
+nav a.l{color:var(--mute);text-decoration:none;font-weight:500}nav a.l:hover{color:var(--fg)}
+.btn{display:inline-block;border:1px solid var(--line);background:var(--s2);color:var(--fg);border-radius:10px;padding:12px 20px;font-weight:600;text-decoration:none}
+.btn:hover{border-color:#3a4864}.btn.p{background:var(--accent);border-color:var(--accent);color:var(--ink)}.btn.p:hover{filter:brightness(1.08)}
+h1{font:700 clamp(36px,6vw,64px)/1.05 'Bricolage Grotesque','DM Sans',sans-serif;letter-spacing:-.03em;margin:0 0 16px}
+h2{font:700 clamp(26px,4vw,36px)/1.15 'Bricolage Grotesque','DM Sans',sans-serif;letter-spacing:-.02em;margin:0 0 14px}
+h3{font-size:17px;margin:0 0 6px}
+.hero{padding-block:36px 24px;display:grid;gap:32px}
+.lead{color:var(--mute);font-size:19px;max-width:620px;margin:0 0 24px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.shot{width:100%;display:block;border-radius:14px;border:1px solid var(--line)}
+section{padding-block:44px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--s);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+ol.steps{margin:0;padding-left:22px;color:var(--mute)}ol.steps li{margin-bottom:8px}ol.steps b{color:var(--fg)}
+details{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--mute);margin:10px 0 0}
+.tag{display:inline-block;font:700 11px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.06em;padding:3px 7px;border-radius:5px;background:var(--accent);color:var(--ink);vertical-align:3px;margin-left:6px}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--mute);font-size:14px}
+code{background:var(--s2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.92em}
+</style></head><body><div class="wrap">
+<nav><a class="logo" href="index.html">TileDropper</a><a class="l" href="index.html#features">Features</a><a class="l" href="index.html#how">How it works</a><a class="l" href="index.html#faq">FAQ</a><a class="l" href="download.html">Download</a><a class="btn p" href="app.html">Open the app</a></nav>
+<header class="hero"><div><h1>Make falling-notes piano videos in minutes.</h1>
+<p class="lead">Open a MIDI or MusicXML file, style it however you like, and record it as a video. It runs in your browser, it is free, and there is nothing to install.</p>
+<div class="cta"><a class="btn p" href="app.html">Open the app</a><a class="btn" href="download.html">Download for offline use</a></div></div>
+<img class="shot" src="img/shot-neon.png" alt="Falling notes landing on a piano keyboard with a neon look" width="1030" height="580"></header>
+
+<section id="features"><h2>Everything is adjustable</h2><div class="grid">
+<div class="card"><h3>MIDI and MusicXML</h3><p>Drop in .mid, .midi, .xml, .musicxml or compressed .mxl files. Each track gets its own color you can show or hide.</p></div>
+<div class="card"><h3>Colors that move</h3><p>Solid colors, gradients, moving gradients, rainbow fades, and your own pictures or videos on the notes, keys and background.</p></div>
+<div class="card"><h3>Note names</h3><p>Show letter names on the keys and on the falling notes, with your choice of naming style.</p></div>
+<div class="card"><h3>Glow, smoke and sparks</h3><p>Change the light where notes meet the keys: glow, aurora, smoke, fire, beams, ripples and particles in many shapes.</p></div>
+<div class="card"><h3>Presets and your own looks</h3><p>Start from nine ready-made looks, tweak anything, and save your own to reuse later.</p></div>
+<div class="card"><h3>Real piano sound</h3><p>A sampled grand piano by default, plus soft and bright pianos, electric piano, harp, music box, organ and synth.</p></div>
+<div class="card"><h3>Hands <span class="tag">BETA</span></h3><p>Optional hands show which fingers could play each note, using a fingering search that avoids crossed fingers. Too-difficult pieces switch it off.</p></div>
+<div class="card"><h3>Your title</h3><p>Add a song title and subtitle on the video, with fonts, size, position and color.</p></div>
+<div class="card"><h3>Record and share</h3><p>Record at 720p or 1080p, 30 or 60 fps, in any aspect ratio. Save it, or send it to YouTube if you connect your own account.</p></div></div></section>
+
+<section><h2>A few looks</h2><div class="shots"><img class="shot" src="img/shot-sunset.png" alt="Warm sunset look with smoke" loading="lazy"><img class="shot" src="img/shot-hands.png" alt="Ember look with glowing notes" loading="lazy"></div></section>
+
+<section id="how"><h2>How it works</h2><ol class="steps">
+<li><b>Open a file.</b> Drop a MIDI or MusicXML file on the preview, or try the built-in sample.</li>
+<li><b>Style it.</b> Pick a preset, then change colors, effects, keys, background, sound and title.</li>
+<li><b>Record.</b> Press Record video. The piece plays once in real time and is saved as a video file.</li></ol>
+<p style="margin-top:22px"><a class="btn p" href="app.html">Try it now</a></p></section>
+
+<section id="faq"><h2>Questions</h2>
+<details><summary>Is it really free?</summary><p>Yes. There is no account, no watermark and no limit on videos.</p></details>
+<details><summary>Do my files get uploaded?</summary><p>No. Everything happens in your browser. The only exception is the optional YouTube upload, which sends your finished video to your own channel.</p></details>
+<details><summary>Why does recording take as long as the song?</summary><p>The video is captured while the piece plays, so a 3-minute piece takes 3 minutes. Keep the tab in front while it records.</p></details>
+<details><summary>What video format do I get?</summary><p>WebM in Chrome, Edge and Firefox, and MP4 where the browser supports it. Both upload to YouTube and most video editors.</p></details>
+<details><summary>Why are the hands marked beta?</summary><p>They are a new feature. The fingering follows common piano rules, but it is a guide, not a teacher's edition, and the hand drawing is still being improved.</p></details>
+<details><summary>Which browsers work?</summary><p>A recent Chrome, Edge or Firefox on a computer works best. Recording is not reliable on phones.</p></details></section><footer>TileDropper is free to use. Your files stay in your browser; nothing is uploaded unless you choose to send a finished video to YouTube.<br>
+Piano samples: Salamander Grand Piano by Alexander Holm, licensed <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</footer></div></body></html>
