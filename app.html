@@ -78,6 +78,9 @@ input[type=range]{accent-color:var(--accent);height:24px;margin:0;width:100%}
 .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
 .lab output{font-family:var(--mono);color:var(--fg);font-size:12px}
 .seg{display:flex;flex-wrap:wrap;gap:4px}
+.speedbox{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.speedcustom{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--muted,inherit)}
+.speedcustom input{width:58px;border:1px solid var(--line);background:var(--surface2);color:inherit;border-radius:7px;padding:6px 6px;font-size:13px}
 .seg button{flex:1 1 auto;border:1px solid var(--line);background:var(--surface2);border-radius:7px;padding:7px 10px;font-size:13px;min-width:0}
 .seg button[aria-checked=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .sel,.txt{width:100%;background:var(--surface2);border:1px solid var(--line);border-radius:7px;padding:8px 10px;min-width:0}
@@ -122,8 +125,6 @@ input[type=range]{accent-color:var(--accent);height:24px;margin:0;width:100%}
   .pane{max-height:none}
 }
 </style>
-</head>
-<body>
 
 <header class="top">
   <h1 class="brand">TileDropper</h1>
@@ -161,7 +162,6 @@ input[type=range]{accent-color:var(--accent);height:24px;margin:0;width:100%}
 </main>
 <input type="file" id="file" accept=".mid,.midi,.xml,.musicxml,.mxl" hidden>
 <input type="file" id="mediaFile" accept="image/*,video/*" hidden>
-<footer style="max-width:1480px;margin:24px auto 0;color:#8b97ac;font:13px/1.6 'DM Sans',system-ui,sans-serif">Your files stay in your browser. Nothing is uploaded unless you choose to send a recorded video to YouTube. Piano samples: Salamander Grand Piano by Alexander Holm, <a style="color:#9db4ff" href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</footer>
 <script>
 function readVLQ(dv, p) {
     let v = 0, b;
@@ -4775,9 +4775,45 @@ TABS.forEach(x => {
 selectTab("looks");
 
 $("speedSeg").replaceWith((() => {
+    const box = el("div", "speedbox");
+    box.id = "speedSeg";
     const s = seg("speed", [ [ .5, "0.5×" ], [ .75, "0.75×" ], [ 1, "1×" ], [ 1.25, "1.25×" ] ], "Playback speed");
-    s.id = "speedSeg";
-    return s;
+    const wrap = el("label", "speedcustom");
+    wrap.title = "Custom speed, from 0.1× to 4×";
+    const inp = el("input");
+    inp.type = "number";
+    inp.min = "0.1";
+    inp.max = "4";
+    inp.step = "0.05";
+    inp.inputMode = "decimal";
+    inp.setAttribute("aria-label", "Custom playback speed");
+    const x = el("span", null, "×");
+    const show = () => {
+        if (document.activeElement !== inp) inp.value = String(Math.round(S.speed * 100) / 100);
+    };
+    const apply = () => {
+        if (locked(S, "speed")) {
+            show();
+            return;
+        }
+        const v = parseFloat(inp.value);
+        if (!(v > 0)) return;
+        S.speed = Math.min(4, Math.max(.1, v));
+        syncAll();
+        changed("speed");
+    };
+    inp.addEventListener("input", apply);
+    inp.addEventListener("change", () => {
+        inp.blur();
+        show();
+    });
+    inp.addEventListener("blur", show);
+    syncers.push(show);
+    show();
+    s.addEventListener("click", () => setTimeout(show, 0));
+    wrap.append(inp, x);
+    box.append(s, wrap);
+    return box;
 })());
 
 refreshVis();
